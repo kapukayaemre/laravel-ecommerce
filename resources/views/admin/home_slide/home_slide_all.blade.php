@@ -10,8 +10,11 @@
                         <div class="card-body">
 
                             <h4 class="card-title">Home Slide Page</h4>
-                            <form action="{{ route('store.profile') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('update.slider') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+
+                                <input type="hidden" name="id" value="{{ $homeSlide->id }}">
+
                                 <div class="row mb-3">
                                     <label for="title" class="col-sm-2 col-form-label">Title</label>
                                     <div class="col-sm-10">
@@ -43,7 +46,7 @@
                                 <div class="row mb-3">
                                     <label for="profile_image" class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">
-                                        <img id="showImage" class="rounded avatar-lg" src="{{ (!empty($homeSlide->home_slide)) ? url('upload/home_slide/'.$homeSlide->home_slide) : url('upload/no_image.jpg') }}" alt="Card image cap">
+                                        <img id="showImage" class="rounded avatar-lg" src="{{ (!empty($homeSlide->home_slide)) ? url($homeSlide->home_slide) : url('upload/no_image.jpg') }}" alt="Card image cap">
                                     </div>
                                 </div>
 
@@ -66,7 +69,7 @@
     {{-- Display updated images --}}
     <script>
         $(document).ready(function (){
-            $('#image').change(function (e){
+            $('#home_slide').change(function (e){
                 var reader = new FileReader();
                 reader.onload = function (e){
                     $('#showImage').attr('src',e.target.result);
