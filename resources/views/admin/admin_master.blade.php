@@ -88,6 +88,9 @@
 
 {{-- Toastr js dynamic messages --}}
 <script>
+    toastr.options = {
+        "positionClass": "toast-top-center"
+    }
     @if(Session::has('message'))
     var type = "{{ Session::get('alert-type','info') }}"
     switch(type){

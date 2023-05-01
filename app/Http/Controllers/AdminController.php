@@ -12,12 +12,16 @@ class AdminController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        /* Toastr Notification */
+        $notification = array(
+            'message'    => 'User Logout Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect('/login')->with($notification);
     }
 
     public function profile()
@@ -48,6 +52,8 @@ class AdminController extends Controller
             $data['profile_image'] = $filename;
         }
         $data->save();
+
+        /* Toastr Notification */
         $notification = array(
             'message'    => 'Admin Profile Updated Successfully!',
             'alert-type' => 'success'
