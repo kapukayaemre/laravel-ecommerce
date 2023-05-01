@@ -44,19 +44,19 @@
 
                         <div class="form-group mb-3 row">
                             <div class="col-12">
-                                <input class="form-control" id="name" type="text" name="name" required="" placeholder="Name">
+                                <input class="form-control" id="name" type="text" name="name" value="{{ old('name') }}" required="" placeholder="Name">
                             </div>
                         </div>
 
                         <div class="form-group mb-3 row">
                             <div class="col-12">
-                                <input class="form-control" id="username" type="text" name="username" required="" placeholder="Username">
+                                <input class="form-control" id="username" type="text" name="username" value="{{ old('username') }}" required="" placeholder="Username">
                             </div>
                         </div>
 
                         <div class="form-group mb-3 row">
                             <div class="col-12">
-                                <input class="form-control" id="email" type="email" name="email" required="" placeholder="Email">
+                                <input class="form-control" id="email" type="email" name="email" value="{{ old('email') }}" required="" placeholder="Email">
                             </div>
                         </div>
 
