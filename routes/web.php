@@ -5,6 +5,7 @@ use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Home\PortfolioController;
 
 
 Route::get('/', function () {
@@ -41,6 +42,11 @@ Route::controller(AboutController::class)->group(function () {
     Route::get('/edit/multi/image/{id}', 'editMultiImage')->name('edit.multi.image');
     Route::post('/update/multi/image', 'updateMultiImage')->name('update.multi.image');
     Route::get('/delete/multi/image/{id}', 'deleteMultiImage')->name('delete.multi.image');
+});
+
+//? Portfolio All Routes
+Route::controller(PortfolioController::class)->group(function () {
+    Route::get('/all/portfolio', 'allPortfolio')->name('all.portfolio');
 });
 
 
