@@ -15,12 +15,12 @@ $(function(){
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = link
-                Swal.fire({
-                    title: 'Deleted!',
-                    text: 'Your file has been deleted.',
-                    icon: 'success',
-                    timer : 3000
-                })
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success',
+                    5000
+                )
             }
         })
 
