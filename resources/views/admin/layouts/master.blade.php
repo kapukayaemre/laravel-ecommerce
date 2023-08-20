@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="{{ asset("backend/assets/images/favicon/favicon.png") }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset("backend/assets/images/favicon/favicon.png") }}" type="image/x-icon">
-    <title>Tivo - Premium Admin Template</title><link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>@yield("title", "Tivo - Premium Admin Template")</title><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset("backend/assets/css/vendors/font-awesome.css") }}">
@@ -33,6 +33,7 @@
     <link id="color" rel="stylesheet" href="{{ asset("backend/assets/css/color-1.css") }}" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset("backend/assets/css/responsive.css") }}">
+    @yield("css")
 </head>
 <body>
 <!-- tap on top starts-->
@@ -60,29 +61,19 @@
         <!-- Page Sidebar Ends-->
 
         <div class="page-body">
-            <div class="container-fluid">
-                <div class="page-title">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3>Ecommerce</h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                                <li class="breadcrumb-item">Dashboard</li>
-                                <li class="breadcrumb-item active">Ecommerce</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Container-fluid starts-->
-            <div class="container-fluid dashboard-2">
-                <div class="row">
-                    @yield("content")
-                </div>
-            </div>
-            <!-- Container-fluid Ends-->
+            <!--* Dynamic Validation Errors -->
+                @if(!empty($errors->all()))
+                    @foreach($errors->all() as $error)
+                        @php
+                            flash()
+                            ->option('position', 'top-center')
+                            ->option('timeout', 7000)
+                            ->addError($error, "Başarısız");
+                        @endphp
+                    @endforeach
+                @endif
+
+            @yield("content")
         </div>
 
         <!-- footer start-->
@@ -123,7 +114,15 @@
 <script src="{{ asset("backend/assets/js/dashboard/dashboard_2.js") }}"></script>
 <!-- Template js-->
 <script src="{{ asset("backend/assets/js/script.js") }}"></script>
-<script src="{{ asset("backend/assets/js/theme-customizer/customizer.js") }}">  </script>
+
 <!-- login js-->
+
+<!-- Alpine Plugins -->
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
+
+<!-- Alpine Core -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+@yield("js")
 </body>
 </html>
