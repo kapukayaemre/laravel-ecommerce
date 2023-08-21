@@ -97,9 +97,10 @@
                                 </div>
 
 
-                                <form action="" method="POST" class="mt-4">
+                                <form action="{{ route("user.profile") }}" method="POST" class="mt-4">
                                     @csrf
                                     <div class="wsus__dash_pass_change mt-2">
+                                        <h4>Parola Güncelleme Alanı</h4>
                                         <div class="row">
                                             <div class="col-xl-4 col-md-6">
                                                 <div class="wsus__dash_pro_single">

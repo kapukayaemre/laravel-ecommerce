@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PasswordUpdateRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -37,6 +38,27 @@ class UserProfileController extends Controller
                 ['timeout' => 5000, 'position' => 'top-center']) :
             flash()->addError(
                 '<div class="text-white">Profil Güncelleme Başarısız Sonuçlandı</div>',
+                "Başarısız",
+                ['timeout' => 5000, 'position' => 'top-center']);
+
+        return redirect()->back();
+    }
+
+    public function updatePassword(PasswordUpdateRequest $request)
+    {
+        $user = Auth::user();
+
+        $update = User::where("id", $user->id)->update([
+            "password" => bcrypt($request->input("password"))
+        ]);
+
+        $update ?
+            flash()->addSuccess(
+                '<div class="text-white">Parola Başarıyla Güncellendi</div>',
+                "Başarılı",
+                ['timeout' => 5000, 'position' => 'top-center']) :
+            flash()->addError(
+                '<div class="text-white">Parola Güncelleme Başarısız Sonuçlandı</div>',
                 "Başarısız",
                 ['timeout' => 5000, 'position' => 'top-center']);
 
