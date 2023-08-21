@@ -71,6 +71,12 @@ return [
         // ],
     ],
 
+    'throttling' => [
+        'enabled' => true,
+        'attempts' => 5,
+        'decay' => 60,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
