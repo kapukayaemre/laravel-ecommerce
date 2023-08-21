@@ -48,6 +48,17 @@
 <!--=============================
   DASHBOARD START
 ==============================-->
+<!--* Dynamic Validation Errors -->
+@if(!empty($errors->all()))
+    @foreach($errors->all() as $error)
+        @php
+            flash()
+            ->option('position', 'top-center')
+            ->option('timeout', 5000)
+            ->addError("<div class='text-white'>$error</div>", "Başarısız");
+        @endphp
+    @endforeach
+@endif
     @yield("content")
 <!--=============================
   DASHBOARD START
@@ -102,6 +113,13 @@
 
 <!--main/custom js-->
 <script src="{{ asset("frontend/js/main.js") }}"></script>
+
+<!-- Alpine Plugins -->
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
+
+<!-- Alpine Core -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 @yield("js")
 </body>
 

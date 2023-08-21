@@ -18,7 +18,7 @@ class ProfileUpdateRequest extends FormRequest
         return [
             "name"     => ["required", "string", "max:50"],
             "surname"  => ["required", "string", "max:50"],
-            "username" => ["required", "max:50"],
+            "username" => ["max:50"],
             "email"    => ["email", "max:50", Rule::unique(User::class)->ignore($this->user()->id)],
             "image"    => ["image", "max:5000"],
             "phone"    => ["max:20"],
@@ -36,7 +36,6 @@ class ProfileUpdateRequest extends FormRequest
             "surname.required"  => "Soyadınız Alanı Doldurulması Zorunludur",
             "surname.string"    => "Soyadınız Sadece Harflerden Oluşabilir",
             "surname.max"       => "Soyadınız Alanı En Fazla 50 Karakterden Oluşabilir",
-            "username.required" => "Kullanıcı Adı Alanı Doldurulması Zorunludur",
             "username.max"      => "Kullanıcı Adı Alanı En Fazla 50 Karakterden Oluşabilir",
             "email.email"       => "Email Formatında Giriş Yapınız",
             "email.max"         => "Email Alanı En Fazla 50 Karakterden Oluşabilir",

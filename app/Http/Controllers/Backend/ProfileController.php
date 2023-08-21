@@ -20,7 +20,7 @@ class ProfileController extends Controller
     public function updateProfile(ProfileUpdateRequest $request)
     {
         $user = Auth::user();
-        $imagePath = handleUpload("image", $user, "user");
+        $imagePath = handleUpload("image", $user, "admin-profile");
 
         $update = User::where("id", $user->id)->update([
             "name"     => $request->input("name"),
