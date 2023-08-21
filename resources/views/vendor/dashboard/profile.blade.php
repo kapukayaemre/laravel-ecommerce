@@ -1,4 +1,4 @@
-@extends("frontend.dashboard.layouts.master")
+@extends("vendor.dashboard.layouts.master")
 @section("title")
     Profil
 @endsection
@@ -12,7 +12,7 @@
   ==============================-->
     <section id="wsus__dashboard">
         <div class="container-fluid">
-            @include("frontend.dashboard.layouts.partials.sidebar")
+            @include("vendor.dashboard.layouts.partials.sidebar")
             <div class="row">
                 <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
                     <div class="dashboard_content mt-2 mt-md-0">
@@ -21,7 +21,7 @@
                             <div class="wsus__dash_pro_area">
                                 <h4>Temel Bilgiler</h4>
                                 <div class="row">
-                                    <form action="{{ route("user.profile") }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route("vendor.profile") }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
                                             <div class="col-xl-10">
@@ -97,7 +97,7 @@
                                 </div>
 
 
-                                <form action="{{ route("user.password.update") }}" method="POST" class="mt-4">
+                                <form action="{{ route("vendor.password.update") }}" method="POST" class="mt-4">
                                     @csrf
                                     <div class="wsus__dash_pass_change mt-2">
                                         <h4>Parola Güncelleme Alanı</h4>
