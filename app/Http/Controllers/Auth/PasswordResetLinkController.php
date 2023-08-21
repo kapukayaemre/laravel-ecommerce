@@ -29,6 +29,13 @@ class PasswordResetLinkController extends Controller
             'email' => ['required', 'email'],
         ]);
 
+        flash()
+            ->option('position', 'top-center')
+            ->option('text', 'white')
+            ->option('timeout', 5000)
+            ->addSuccess("<div class='text-white'>Parola Sıfırlama Linki Mail Adresinize Gönderilmiştir</div>", "Bilgi");
+
+
         // We will send the password reset link to this user. Once we have attempted
         // to send the link, we will examine the response then see the message we
         // need to show to the user. Finally, we'll send out a proper response.
