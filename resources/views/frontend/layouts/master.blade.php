@@ -83,6 +83,17 @@
     Main Content Start
 ==============================-->
 @yield("content")
+@if(!empty($errors->all()))
+    @foreach($errors->all() as $error)
+        @php
+            flash()
+            ->option('position', 'top-center')
+            ->option('text', 'white')
+            ->option('timeout', 5000)
+            ->addError("<div class='text-white'>$error</div>", "Başarısız");
+        @endphp
+    @endforeach
+@endif
 <!--============================
     Main Content End
 ==============================-->
